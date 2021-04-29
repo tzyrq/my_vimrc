@@ -72,10 +72,28 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+" For Makefile tabs
+if has("autocmd")
+    " If the filetype is Makefile then we need to use tabs
+    " So do not expand tabs into space.
+    autocmd FileType make   set noexpandtab
+endif
 
+" Store folds when leave
+autocmd BufWinLeave *.* mkview
+" Restore folds when open agin
+autocmd BufWinEnter *.* silent loadview
 
+" Vim-plug start
+call plug#begin('~/.vim/plugged')
+Plug 'ayu-theme/ayu-vim'
+Plug 'vim-airline/vim-airline'
+call plug#end()
 
-
+"Color scheme: ayu-theme config
+set termguicolors
+let ayucolor="mirage"
+colorscheme ayu
 
 
 
