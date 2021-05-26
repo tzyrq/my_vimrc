@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Line number
@@ -72,6 +72,8 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
+filetype plugin indent on
+
 " For Makefile tabs
 if has("autocmd")
     " If the filetype is Makefile then we need to use tabs
@@ -79,10 +81,11 @@ if has("autocmd")
     autocmd FileType make   set noexpandtab
 endif
 
+
 " Store folds when leave
-autocmd BufWinLeave *.* mkview
+"autocmd BufWinLeave *.* mkview
 " Restore folds when open agin
-autocmd BufWinEnter *.* silent loadview
+"autocmd BufWinEnter *.* silent loadview
 
 " if Vim-plug not installed
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -91,10 +94,26 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+if has("autocmd")
+    autocmd Filetype javascript   set tabstop=2 shiftwidth=2 noexpandtab sts=2
+endif
+
+if has("autocmd")
+    autocmd Filetype html set tabstop=2 shiftwidth=2 noexpandtab sts=2
+endif
+
 " Vim-plug start
 call plug#begin('~/.vim/plugged')
-Plug 'ayu-theme/ayu-vim'
-Plug 'vim-airline/vim-airline'
+  Plug 'ayu-theme/ayu-vim'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'pangloss/vim-javascript'
+  Plug 'lervag/vimtex'
+  Plug 'godlygeek/tabular'
+  Plug 'plasticboy/vim-markdown'
+  Plug 'preservim/nerdtree'
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'mattn/emmet-vim'
 call plug#end()
 
 "Color scheme: ayu-theme config
@@ -102,5 +121,6 @@ set termguicolors
 let ayucolor="mirage"
 colorscheme ayu
 
-
-
+" vim-airline configuration 
+let g:airline_theme='light'
+let g:airline_powerline_fonts=1
