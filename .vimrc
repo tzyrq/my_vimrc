@@ -95,11 +95,12 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 if has("autocmd")
+    " JavaScript: Set tab to 2
     autocmd Filetype javascript   set tabstop=2 shiftwidth=2 noexpandtab sts=2
-endif
-
-if has("autocmd")
+    " HTML: Set tab to 2
     autocmd Filetype html set tabstop=2 shiftwidth=2 noexpandtab sts=2
+    " Jinja: Set tab to 2
+    autocmd Filetype jinja set tabstop=2 shiftwidth=2 noexpandtab sts=2
 endif
 
 " Vim-plug start
@@ -114,6 +115,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'mattn/emmet-vim'
+  Plug 'lepture/vim-jinja'
 call plug#end()
 
 "Color scheme: ayu-theme config
@@ -127,24 +129,26 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
+let g:airline_powerline_fonts = 1
+
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
-let g:airline_symbols.colnr = '㏇'
-let g:airline_symbols.colnr = '℅'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '☰'
-let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.maxlinenr = '㏑'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+" let g:airline_symbols.colnr = '㏇'
+" let g:airline_symbols.colnr = '℅'
+" let g:airline_symbols.crypt = '🔒'
+" let g:airline_symbols.linenr = '☰'
+" let g:airline_symbols.linenr = '␊'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.maxlinenr = ''
+" let g:airline_symbols.maxlinenr = '㏑'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.spell = 'Ꞩ'
+" let g:airline_symbols.notexists = 'Ɇ'
+" let g:airline_symbols.whitespace = 'Ξ'
